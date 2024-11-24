@@ -20,6 +20,7 @@ class Settings(BaseSettings):
 
     #MONGODB
     DATABASE_HOST: str | None = None
+    DATABASE_NAME: str | None = None
     #QDrantVDB
     #AWS Auth
     #AWS Sagemaker
