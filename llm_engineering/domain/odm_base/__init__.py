@@ -1,3 +1,3 @@
-from .nosql import nosql
+from .nosql import NoSQLBaseDocument
 
-__all__ = ["nosql"]
+__all__ = ["NoSQLBaseDocument"]

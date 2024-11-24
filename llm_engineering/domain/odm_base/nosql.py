@@ -36,15 +36,17 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
     @classmethod
     def from_mangodb(cls: Type[T], data: dict) -> T:
 
+        """Convert "_id" (str object) to "id" (uuid object)"""
         if not data:
             logger.error("ValueError: Failed to retrieve data from MongoDB to convert into document.")
             raise ValueError("Data is empty")
         
-        id = data.pop("id")
+        id = data.pop("_id")
         return cls(**dict(data, id=id))
 
     def to_mongodb(self: T, **kwargs) -> dict:
 
+        """Convert "id" (uuid object) to "_id" (str object)"""
         exclude_unset = kwargs.pop("exclude_unset", False)
         by_alias = kwargs.pop("by_alias", True)
 
@@ -55,10 +57,18 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
         
         for key, value in parsed.items():
 
-            if isinstance(value, uuid.uuid4):
+            if isinstance(value, uuid.UUID):
                 parsed[key] = str(value)
 
         return parsed
+    
+    def model_dump(self: T, **kwargs) -> dict:
+
+        _dict = super().model_dump(**kwargs)
+
+        for key, value in _dict.items():
+            if isinstance(value, uuid.UUID):
+                _dict[key] = str(value)
     
     def save(self: T, **kwargs) -> T | None:
 
