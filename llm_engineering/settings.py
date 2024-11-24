@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     COMET_PROJECT: str = "twinLLM"
 
     #MONGODB
+    DATABASE_HOST: str | None = None
     #QDrantVDB
     #AWS Auth
     #AWS Sagemaker
