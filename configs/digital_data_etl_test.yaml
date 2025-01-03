@@ -1,0 +1,11 @@
+parameters:
+  user_full_name: First_name Last_name
+  links:
+    #github
+    - https://mlabonne.github.io/blog/posts/2024-07-15_The_Rise_of_Agentic_Data_Generation.html
+    #custom
+    - https://maximelabonne.substack.com/p/integer-programming-vs-linear-programming-in-python-f1be5bb4e60e
+    #medium
+    - https://medium.com/decodingml/the-4-advanced-rag-algorithms-you-must-know-to-implement-5d0c7f1199d2
+    #linkedin
+    - https://www.linkedin.com/pulse/what-retrieval-augmented-generation-rag-vin%C3%ADcius-eduardo-h0psf/?trackingId=kSirJtssROSRGETDcABWWA%3D%3D
