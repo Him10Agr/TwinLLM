@@ -6,7 +6,6 @@ from llm_engineering.settings import settings
 
 class MongoDatabaseConnector:
 
-    __slots__ = "_instance"
     _instance: MongoClient | None = None
 
     def __new__(cls, *args, **kwargs) -> MongoClient:
@@ -21,6 +20,9 @@ class MongoDatabaseConnector:
 
                 raise
             logger.info(f"Connection to MongoDB with URI successful: {settings.DATABASE_HOST}")
+
+            return cls._instance
+
 
 if __name__ != "__main__":
 

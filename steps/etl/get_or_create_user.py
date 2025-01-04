@@ -29,3 +29,4 @@ def get_or_create_user(user_full_name: str) -> Annotated[UserDocument, "user"]:
     step_context = get_step_context()
     step_context.add_output_metadata(output_name="user", metadata=_get_metadata(user_full_name=user_full_name, user=user))
 
+    return user

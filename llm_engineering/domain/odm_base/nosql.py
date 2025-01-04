@@ -34,7 +34,7 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
         return hash(self.id)
     
     @classmethod
-    def from_mangodb(cls: Type[T], data: dict) -> T:
+    def from_mongodb(cls: Type[T], data: dict) -> T:
 
         """Convert "_id" (str object) to "id" (uuid object)"""
         if not data:
@@ -69,6 +69,8 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
         for key, value in _dict.items():
             if isinstance(value, uuid.UUID):
                 _dict[key] = str(value)
+        
+        return _dict
     
     def save(self: T, **kwargs) -> T | None:
 
@@ -98,7 +100,7 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
         try:
             instance = collection.find_one(filter=filter_options)
             if instance:
-                return cls.from_mangodb(instance)
+                return cls.from_mongodb(instance)
             
             new_instance = cls(**filter_options)
             new_instance = new_instance.save()
@@ -130,7 +132,7 @@ class NoSQLBaseDocument(BaseModel, Generic[T], ABC):
         try:
             instance = collection.find_one(filter=filter_options)
             if instance:
-                return cls.from_mangodb(instance)
+                return cls.from_mongodb(instance)
             return None
         except errors.OperationFailure:
             logger.error("Failed to retrieve document.")

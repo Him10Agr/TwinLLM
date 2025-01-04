@@ -1,3 +1,3 @@
-from infra import db
+from . import db
 
 __all__ = ["db"]

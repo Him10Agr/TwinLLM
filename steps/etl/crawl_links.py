@@ -17,7 +17,7 @@ def crawl_links(user: UserDocument, links: list[str]) -> Annotated[list[str], "c
     metadata = {}
     successful_crawls = 0
     for link in tqdm(links):
-        successful_crawl, crawled_domain = _crawl_link(dispacther=dispatcher, link=link)
+        successful_crawl, crawled_domain = _crawl_link(dispacther=dispatcher, link=link, user=user)
         successful_crawls += successful_crawl
 
         metadata = _add_to_metadata(metadata=metadata, domain=crawled_domain, successfull_crawl=successful_crawl)

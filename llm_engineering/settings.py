@@ -16,13 +16,22 @@ class Settings(BaseSettings):
 
     #COMET LLM EXPERIMENTATION
     COMET_API_KEY: str | None = None
-    COMET_PROJECT: str = "twinLLM"
+    COMET_PROJECT: str | None = None
 
     #MONGODB
     DATABASE_HOST: str | None = None
     DATABASE_NAME: str | None = None
     #QDrantVDB
+    USE_QDRANT_CLOUD: bool = False
+    QDRANT_CLOUD_URL: str | None = None
+    QDRANT_APIKEY: str | None = None
+
     #AWS Auth
+    AWS_ARN_ROLE: str | None = None
+    AWS_REGIONL: str | None = None
+    AWS_ACCESS_KEY: str | None = None
+    AWS_SECRET_KEY: str | None = None
+
     #AWS Sagemaker
     #RAG
     #LinkedIN Creds

@@ -11,8 +11,6 @@ from .base import BaseCrawler
 
 class CustomArticleCrawler(BaseCrawler):
 
-    __slots__ = "model"
-
     model = ArticleDocument
 
     def extract(self, link: str, **kwargs) -> None:

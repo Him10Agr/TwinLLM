@@ -26,7 +26,7 @@ class RepositoryDocument(Document):
 
 class PostDocument(Document):
 
-    image: Optional[str] | None = None
+    image: Optional[str] = None
     link: str | None = None
 
     class Settings:
